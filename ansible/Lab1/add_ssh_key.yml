@@ -1,0 +1,18 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+
+  - name: Create automator user
+    eos_user:
+      name: automator 
+      nopassword: yes
+      privilege: 15
+      role: network-admin
+      state: present
+
+  - name: Add shh_key
+    eos_user:
+      name: automator
+      sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      state: present
