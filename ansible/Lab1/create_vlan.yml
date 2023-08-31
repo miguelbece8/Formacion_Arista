@@ -1,0 +1,12 @@
+- hosts: leaf2-DC1
+  gather_facts: no
+
+  tasks:
+
+  - name: Create VLAN
+    eos_vlans:
+     config:
+       - vlan_id: 4000
+         name: Test
+         state: active
+         

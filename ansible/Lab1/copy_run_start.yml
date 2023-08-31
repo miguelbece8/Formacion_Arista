@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+
+  - name: Copy running-config in startup-config
+    eos_command:
+      commands:
+        - copy running-config startup-config
